@@ -73,6 +73,9 @@ myApp.getBookImage = function(){
     }
 };
 
+
+
+
 //gets authors from NYT api
 myApp.displayNYT = function() {
     $.ajax({
@@ -132,6 +135,11 @@ myEvents.selectAuthor = function(){
 };
 
 
+ 
+
+ 
+
+
 /* initialize other methods */
 myApp.init = function(){
     myEvents.onSubmit();
@@ -139,6 +147,10 @@ myApp.init = function(){
     myEvents.selectAuthor();
     myApp.displayNYT();
 };
+
+
+       
+ 
 
 //Run on document ready
 $(function(){
