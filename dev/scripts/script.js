@@ -84,6 +84,7 @@ myApp.getBookInfo = function(){
     }
 };
 
+
 //gets a random set of authors every time page loads
 myApp.displayNYT = function(randomNumber) {
     $.ajax({ //make an ajax call to NYT API with a random offset
@@ -169,6 +170,11 @@ myEvents.selectBook = function(){
     })
 }
 
+ 
+
+ 
+
+
 /* initialize other methods */
 myApp.init = function(){
     myEvents.onSubmit();
@@ -176,6 +182,10 @@ myApp.init = function(){
     myEvents.selectBook();
     myApp.displayNYT(myApp.randomOffset(0, 1000));
 };
+
+
+       
+ 
 
 //Run on document ready
 $(function(){
