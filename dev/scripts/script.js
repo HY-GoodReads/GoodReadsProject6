@@ -36,6 +36,7 @@ myApp.getAuthorID = function(new_input){
     }).then(function(res) {
         console.log(res);
         var author_id = res.GoodreadsResponse.author.id; //store the author ID into a global variable to be accessed later
+        console.log(author_id);
         myApp.getBooks(author_id);
     });
 };
@@ -56,20 +57,25 @@ myApp.getBooks = function(authorID){
         }
     }).then(function(res) {
         console.log(res);
-        myVars.books = res.GoodreadsResponse.author.books.book
+        myVars.books = res.GoodreadsResponse.author.books.book;
         console.log(myVars.books);
-        myApp.getBookImage();
+        myApp.getBookInfo();
     });
     console.log('This should come before goodreads object');
 };
 
 //gets book image URL
-myApp.getBookImage = function(){
+myApp.getBookInfo = function(){
     $('#book-list').empty();
     for (i = 0; i < myVars.books.length; i++) {
+        // var bookDescript = myVars.books[i].description;
         var imageUrl = myVars.books[i].image_url;
+        var bookRating = parseFloat(myVars.books[i].average_rating).toFixed(1);
         var bookTitle = myVars.books[i].title;
-        $('#book-list').append('<li><img src=' + imageUrl + '><br><p>' + bookTitle + '</p></li>');
+        var bookDate = myVars.books[i].publication_month + ' / ' + myVars.books[i].publication_day + ' / ' + myVars.books[i].publication_year;
+        console.log(bookDate);
+
+        $('#book-list').append('<li><img src=' + imageUrl + '><br><p>' + bookTitle + '</p><br><div class="book-overlay"><p>' + bookTitle + '</p><br><img src=' + imageUrl + '><br><p>Rating: ' + bookRating + ' / 5</p><br><p>Published: ' + bookDate + '</p><br><button id="close-overlay" type="button">close</button></div></li>');
     }
 };
 
@@ -77,10 +83,10 @@ myApp.getBookImage = function(){
 
 
 //gets authors from NYT api
-myApp.displayNYT = function() {
+myApp.displayNYT = function(randomNumber) {
     $.ajax({
         dataType: 'json',
-        url: "https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=test&offset=60",
+        url: "https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=test&offset=" + randomNumber,
         method: 'GET',
     }).then(function (res) {
         myVars.bestAuthorArray = res.results;
@@ -106,6 +112,13 @@ myApp.printAuthors = function(array){
     }
 };
 
+//gets random number in increments of 20
+myApp.randomOffset = function(min, max){
+    var minimum = Math.ceil(min);
+    var maximum = Math.floor(max);
+    var randomNumber =  Math.floor(Math.random() * (maximum - minimum + 1) + min);
+    return randomNumber * 20;
+}
 
 /* event handlers for web app */
 
@@ -120,6 +133,7 @@ myEvents.onSubmit = function(){
 //**TEMP** click to show author names
 myEvents.showAuthor = function(){
     $('#show-authors').on('click', function(e){
+        $('#author-list').empty();
         e.preventDefault();
         myApp.printAuthors(myVars.uniqueAuthorArray);
     })
@@ -134,6 +148,19 @@ myEvents.selectAuthor = function(){
     })
 };
 
+//when book is clicked, display overlay + on close, remove overlay
+myEvents.selectBook = function(){
+    $('#book-list').on('click', 'li',function(e){
+        $('.book-overlay').removeClass('book-overlay-fix');
+        var tag = e.target.tagName;
+        console.log(tag);
+        if (tag == 'IMG' || tag == 'P') {
+            $(this).find('.book-overlay').addClass('book-overlay-fix');
+        } else if (tag == 'BUTTON') {
+            $(this).find('.book-overlay').removeClass('book-overlay-fix');
+        }
+    })
+}
 
  
 
@@ -145,7 +172,8 @@ myApp.init = function(){
     myEvents.onSubmit();
     myEvents.showAuthor();
     myEvents.selectAuthor();
-    myApp.displayNYT();
+    myEvents.selectBook();
+    myApp.displayNYT(myApp.randomOffset(0, 1000));
 };
 
 
