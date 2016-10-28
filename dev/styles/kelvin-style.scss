@@ -9,7 +9,6 @@ $blue: #2E536B;
 $teal: #00D1B4;
 $peach: #D74F36;
 $red: #9E1110;
-
 h1, p {
    margin: 0;
 }
@@ -99,6 +98,7 @@ body {
 }
 
 .red {
+
    color: $peach;
 }
 
@@ -148,7 +148,7 @@ body {
 .book-overlay {
    position: fixed;
    width: calc(60% - 50px);
-   height: calc(70% - 50px);
+   height: calc(75% - 50px);
    top: 50%;
    left: 50%;
    display: flex;
@@ -169,6 +169,7 @@ body {
       text-align:left;
       padding: 3% 0;
       line-height: 25px;
+
    }
 
    .images{
@@ -186,6 +187,7 @@ body {
    }
 
    button{
+      padding:3px;
       margin-top: 3%;
       color: white;
       border:2px solid white;
@@ -446,4 +448,25 @@ form {
    flex-direction: column;
    justify-content: center;
    align-items: center;
+}
+
+footer{
+  
+   padding:50px 10px;
+   text-align: center;
+   // background-color:#D74F36;
+   width:100%;
+   color:grey;
+}
+
+footer p{
+    font-size: 12px;
+   font-weight: bolder;
+   word-spacing: 1px;
+   letter-spacing: 1px;
+   line-height: 24px;
+   &:last-child{
+       font-size:10px;
+
+   }
 }
