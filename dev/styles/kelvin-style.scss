@@ -39,8 +39,15 @@ body {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      padding-left: 15px;
       #input {
          margin: 10% 0 3% 0;
+      }
+      p {
+         position: absolute;
+         bottom: 10px;
+         font-size: 0.7rem;
+         font-family: "Work Sans";
       }
    }
 }
@@ -56,13 +63,31 @@ body {
    justify-content: space-between;
    color: white;
    opacity: 0;
+   z-index: 15;
    transition: 0.75s;
    padding: 0.5% 2% 0.5% 0.5%;
    font-family: 'Work Sans', sans-serif;
-   img {
-      width: 3%;
-      height: 100%;
+   .hero-nav-left {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      span {
+         color: white;
+      }
+      img {
+         width: 5%;
+         height: 100%;
+         margin-right: 10px;
+      }
+      p {
+         font-size: 1.3rem;
+      }
    }
+}
+
+.hero-arrow {
+   margin-left: 3px;
+   font-size: 1.4rem;
 }
 
 .hero-left-title {
@@ -92,6 +117,24 @@ body {
       flex: 1 0 calc(25% - 20px);
       margin: 10px;
       cursor: pointer;
+      transition: 0.5s;
+      &:hover {
+         transform: scale(1.1);
+      }
+      p {
+         margin-top: 20px;
+         position: relative;
+         &:after {
+            content: '';
+            width: 112px;
+            background: $teal;
+            height: 2px;
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translate(-50%,-50%);
+         }
+      }
       img {
          width: 111px;
          height: 148px;
@@ -157,6 +200,7 @@ body {
       color: 2E536B;
       transition:1s;
    }
+   
 
 .book-overlay-fix {
    opacity: 1;
@@ -181,7 +225,7 @@ body {
 .left-top {
    height: 33.3%;
    width: 100%;
-   background: url('../../assets/unsplash-writing-2.jpeg');
+   // background: url('../../assets/unsplash-writing-2.jpeg');
    background-size: cover;
    background-position: center center;
    display: flex;
@@ -189,7 +233,29 @@ body {
    justify-content: center;
    align-items: center;
    text-align: center;
+   position:relative;
+   overflow:hidden;
 }
+
+.left-top:after {
+  content: '';
+  position: absolute;
+  display:block;
+  z-index:-1;
+  top: 0;
+  left: 0;
+  bottom:0;
+  right:0;
+  background: url('../../assets/unsplash-writing-2.jpeg') no-repeat center;
+  opacity:0.8;
+  background-size: cover;
+}
+
+.left-top:hover:after{
+    -webkit-filter: blur(5px);
+}
+
+
 .left-bottom {
    width: 100%;
    height: 66.6%;
@@ -217,10 +283,10 @@ body {
 .left-bottom-small {
    flex: 1 0 calc(100% - 10px);
    height: calc(50% - 10px);
-   background: white;
+   background: $blue;
    margin-top: 10px;
    display: flex;
-   color: black;
+   color: white;
    flex-direction: column;
    justify-content: center;
    align-items: center;
@@ -228,6 +294,21 @@ body {
    img {
       width: 50%;
       height: 50%;
+   }
+}
+
+.blah {
+   position: relative;
+   padding: 0 10px;
+   &:after {
+      content: '';
+      height: 2px;
+      background: $teal;
+      width: 55%;
+      position: absolute;
+      transform: translate(-50%,-50%);
+      top: calc(100% + 20px);
+      left: 50%;
    }
 }
 
@@ -279,6 +360,13 @@ body {
    // text-align: center;
 
 
+.grid-tagline {
+   font-size: 0.7rem;
+   text-transform: uppercase;
+   color: $peach;
+}
+
+
 .grid-filter {
    height: 100%;
    width: 100%;
@@ -288,4 +376,23 @@ body {
    justify-content: center;
    align-items: center;
    text-align: center;
-}
+
+   }
+
+   // cursor: pointer;
+   // > * 
+   // {
+   //    position: relative;
+   //    &:after {
+   //       content: '';
+   //       height: 2px;
+   //       background: $teal;
+   //       width: 55%;
+   //       position: absolute;
+   //       transform: translate(-50%,-50%);
+   //       top: calc(100% + 20px);
+   //       left: 50%;
+   //    }
+   // }
+
+
