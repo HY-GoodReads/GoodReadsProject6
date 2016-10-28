@@ -264,6 +264,8 @@ body {
   height: calc(70% - 50px);
   top: 50%;
   left: 50%;
+  display: flex;
+  flex-wrap: wrap;
   transform: translate(-50%, -50%);
   background: rgba(0, 0, 0, 0.75);
   opacity: 0;
@@ -271,12 +273,9 @@ body {
   color: white;
 }
 
-.book-overlay .blabla {
-  display: flex;
-  flex-wrap: wrap;
-  width: calc(50%-50px);
-  margin-left: 50px;
+.book-overlay .para {
   margin-top: 10%;
+  width: 50%;
 }
 
 .book-overlay p {
@@ -287,11 +286,14 @@ body {
 }
 
 .book-overlay .images {
+  margin-top: 10%;
+  width: 50%;
   justify-content: center;
 }
 
 .book-overlay img {
   vertical-align: middle;
+  width: 45%;
   margin: 0 auto;
   display: block;
 }
