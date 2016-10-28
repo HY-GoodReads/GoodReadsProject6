@@ -2,4 +2,6 @@
 *css.map
 .idea
 *.css
+*.cfg
 node_modules
+*.css
