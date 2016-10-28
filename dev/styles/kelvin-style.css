@@ -191,7 +191,7 @@ body {
 }
 
 .hero .hero-left {
-  width: 50%;
+  width: 60%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -207,12 +207,21 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: #D74F36;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
   color: white;
   opacity: 0;
   transition: 0.75s;
+  padding: 0.5% 2% 0.5% 0.5%;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.hero-nav img {
+  width: 3%;
+  height: 100%;
 }
 
 .hero-left-title {
@@ -221,6 +230,10 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
+
+.red {
+  color: #D74F36;
 }
 
 /* Book Display Styling */
@@ -248,11 +261,9 @@ body {
 .book-overlay {
   position: fixed;
   width: calc(60% - 50px);
-  height: calc(80% - 50px);
+  height: calc(70% - 50px);
   top: 50%;
   left: 50%;
-  display: flex;
-  flex-wrap: wrap;
   transform: translate(-50%, -50%);
   background: rgba(0, 0, 0, 0.75);
   opacity: 0;
@@ -260,32 +271,44 @@ body {
   color: white;
 }
 
-.book-overlay .para {
+.book-overlay .blabla {
   display: flex;
-  flex-direction: column;
-  width: 50%;
-  margin: 0 auto;
+  flex-wrap: wrap;
+  width: calc(50%-50px);
+  margin-left: 50px;
+  margin-top: 10%;
 }
 
 .book-overlay p {
-  padding: 3% 10%;
+  vertical-align: middle;
+  text-align: left;
+  padding: 3% 0;
   line-height: 25px;
 }
 
 .book-overlay .images {
-  width: 45%;
-  margin: 0 auto;
   justify-content: center;
 }
 
 .book-overlay img {
-  width: 50%;
+  vertical-align: middle;
+  margin: 0 auto;
+  display: block;
 }
 
-.book-overlay .book-button {
-  width: 50%;
-  margin: 0 auto;
+.book-overlay button {
+  margin-top: 3%;
+  color: white;
+  border: 2px solid white;
+  width: 40%;
   text-align: center;
+  justify-content: left;
+}
+
+button:hover {
+  background-color: #D74F36;
+  color: 2E536B;
+  transition: 1s;
 }
 
 .book-overlay-fix {
@@ -352,9 +375,10 @@ body {
 .left-bottom-small {
   flex: 1 0 calc(100% - 10px);
   height: calc(50% - 10px);
-  background: lightgreen;
+  background: white;
   margin-top: 10px;
   display: flex;
+  color: black;
   flex-direction: column;
   justify-content: center;
   align-items: center;
